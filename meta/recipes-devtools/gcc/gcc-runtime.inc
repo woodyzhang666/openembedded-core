@@ -38,6 +38,8 @@ RUNTIMELIBITM:nios2 = ""
 RUNTIMELIBITM:microblaze = ""
 RUNTIMELIBITM:riscv32 = ""
 RUNTIMELIBITM:riscv64 = ""
+RUNTIMELIBITM:loongarch32 = ""
+RUNTIMELIBITM:loongarch64 = ""
 RUNTIMELIBSSP ?= ""
 RUNTIMELIBSSP:mingw32 ?= "libssp"
 

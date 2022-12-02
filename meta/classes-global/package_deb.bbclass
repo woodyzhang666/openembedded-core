@@ -42,6 +42,12 @@ def debian_arch_map(arch, tune):
         return "arm64"
     if arch == "arm":
         return arch + ["el", "hf"]["callconvention-hard" in tune_features]
+        """
+    if arch == "loongarch64":
+        return "loong64"
+    if arch == "loongarch32":
+        return "loong32"
+        """
     return arch
 
 python do_package_deb () {

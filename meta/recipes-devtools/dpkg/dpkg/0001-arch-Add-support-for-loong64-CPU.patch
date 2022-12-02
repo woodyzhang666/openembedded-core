@@ -1,0 +1,85 @@
+From 60d81ae6f6fec3f85e8a61ea3a75af6b257e47ab Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodyzhang666@gmail.com>
+Date: Fri, 2 Dec 2022 16:40:00 +0800
+Subject: [PATCH] arch: Add support for loong64 CPU
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is based on the LoongArch 64-bit little-endian hard-float ISA.
+
+Upstream-Status: Backport [321e479ba142e6b05d1a27b50e4bb7900903fbf0]
+Signed-off-by: Woody Zhang <woodyzhang666@gmail.com>
+
+---
+ data/cputable                  | 1 +
+ scripts/Dpkg/Shlibs/Objdump.pm | 7 +++++++
+ scripts/t/Dpkg_Arch.t          | 4 ++--
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/data/cputable b/data/cputable
+index fffc055f0..5d031ce04 100644
+--- a/data/cputable
++++ b/data/cputable
+@@ -46,6 +46,7 @@ ppc64		powerpc64	(powerpc|ppc)64		64	big
+ ppc64el		powerpc64le	powerpc64le		64	little
+ riscv32		riscv32		riscv32			32	little
+ riscv64		riscv64		riscv64			64	little
++loong64		loongarch64 loongarch64		64  little
+ s390		s390		s390			32	big
+ s390x		s390x		s390x			64	big
+ sh3		sh3		sh3			32	little
+diff --git a/scripts/Dpkg/Shlibs/Objdump.pm b/scripts/Dpkg/Shlibs/Objdump.pm
+index baeb8bb5c..f0df51035 100644
+--- a/scripts/Dpkg/Shlibs/Objdump.pm
++++ b/scripts/Dpkg/Shlibs/Objdump.pm
+@@ -101,6 +101,7 @@ use constant {
+     ELF_MACH_XTENSA         => 94,
+     ELF_MACH_MICROBLAZE     => 189,
+     ELF_MACH_ARCV2          => 195,
++	ELF_MACH_LOONGARCH		=> 258,
+     ELF_MACH_AVR_OLD        => 0x1057,
+     ELF_MACH_OR1K_OLD       => 0x8472,
+     ELF_MACH_ALPHA          => 0x9026,
+@@ -125,6 +126,11 @@ use constant {
+ 
+     ELF_FLAG_IA64_ABI64     => 0x00000010,
+ 
++	ELF_FLAG_LOONGARCH_SOFT_FLOAT	= 0x00000001,
++	ELF_FLAG_LOONGARCH_SINGLE_FLOAT	= 0x00000002,
++	ELF_FLAG_LOONGARCH_DOUBLE_FLOAT	= 0x00000003,
++	ELF_FLAG_LOONGARCH_ABI_MASK		= 0x00000007,
++
+     ELF_FLAG_MIPS_ABI2      => 0x00000020,
+     ELF_FLAG_MIPS_32BIT     => 0x00000100,
+     ELF_FLAG_MIPS_FP64      => 0x00000200,
+@@ -158,6 +164,7 @@ my %elf_mach_map = (
+ # behavior, and we do not drop dependencies.
+ my %elf_flags_mask = (
+     ELF_MACH_IA64()     => ELF_FLAG_IA64_ABI64,
++	ELF_MACH_LOONGARCH()	=> ELF_FLAG_LOONGARCH_ABI_MASK,
+     ELF_MACH_MIPS()     => ELF_FLAG_MIPS_ABI_MASK | ELF_FLAG_MIPS_ABI2,
+     ELF_MACH_PPC64()    => ELF_FLAG_PPC64_ABI64,
+ );
+diff --git a/scripts/t/Dpkg_Arch.t b/scripts/t/Dpkg_Arch.t
+index be83dc2eb..1fcab6beb 100644
+--- a/scripts/t/Dpkg_Arch.t
++++ b/scripts/t/Dpkg_Arch.t
+@@ -16,7 +16,7 @@
+ use strict;
+ use warnings;
+ 
+-use Test::More tests => 18407;
++use Test::More tests => 18900;
+ 
+ use_ok('Dpkg::Arch', qw(debarch_to_debtuple debarch_to_multiarch
+                         debarch_eq debarch_is debarch_is_wildcard
+@@ -187,7 +187,7 @@ foreach my $arch (@valid_arches) {
+               "bijective triplet $triplet to tuple @tuple");
+ }
+ 
+-is(scalar @valid_arches, 554, 'expected amount of known architectures');
++is(scalar @valid_arches, 569, 'expected amount of known architectures');
+ 
+ {
+     local $ENV{CC} = 'false';

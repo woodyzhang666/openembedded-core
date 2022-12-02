@@ -1,0 +1,25 @@
+From 57b6db2f33eadb2f29b3cefe5a244ada637f7f58 Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodyzhang666@gmail.com>
+Date: Mon, 5 Dec 2022 13:04:54 +0800
+Subject: [PATCH] disable false alarm on loongarch GCC 12.2
+
+Upstream-Status: Inappropriate
+Signed-off-by: Woody Zhang <woodyzhang666@gmail.com>
+---
+ m4/manywarnings.m4 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/m4/manywarnings.m4 b/m4/manywarnings.m4
+index 872ea58..ef2a183 100644
+--- a/m4/manywarnings.m4
++++ b/m4/manywarnings.m4
+@@ -199,6 +199,9 @@ AC_DEFUN([gl_MANYWARN_ALL_GCC(C)],
+   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101713
+   gl_AS_VAR_APPEND([$1], [' -Wno-analyzer-malloc-leak'])
+ 
++  # falas alarm on loongarch GCC 12.2
++  gl_AS_VAR_APPEND([$1], [' -Wno-analyzer-use-of-uninitialized-value'])
++
+   AC_LANG_POP([C])
+ ])
+ 

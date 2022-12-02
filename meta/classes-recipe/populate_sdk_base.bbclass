@@ -53,6 +53,8 @@ SDK_TOOLCHAIN_LANGS ??= ""
 SDK_TOOLCHAIN_LANGS:remove:sdkmingw32 = "rust"
 # libstd-rs doesn't build for mips n32 with compiler constraint errors
 SDK_TOOLCHAIN_LANGS:remove:mipsarchn32 = "rust"
+SDK_TOOLCHAIN_LANGS:remove:loongarch64 = "rust"
+SDK_TOOLCHAIN_LANGS:remove:loongarch32 = "rust"
 
 TOOLCHAIN_HOST_TASK ?= " \
     nativesdk-packagegroup-sdk-host \

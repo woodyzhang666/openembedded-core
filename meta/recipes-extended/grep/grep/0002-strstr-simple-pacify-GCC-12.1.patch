@@ -1,0 +1,36 @@
+From 08babc2b03c1f96cef998aeb33bcfb293a7c2c7f Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodyzhang666@gmail.com>
+Date: Mon, 5 Dec 2022 10:44:04 +0800
+Subject: [PATCH] strstr-simple: pacify GCC 12.1
+
+* lib/str-two-way.h (two_way_long_needle): Pacify GCC 12.1
+    -Wsuggest-attribute=pure (x86-64, -O2).
+
+Upstream-Status: Backport [dd2503c8e73621e919e8e214a29c495ac89d8a92]
+Signed-off-by: Woody Zhang <woodyzhang666@gmail.com>
+---
+ lib/str-two-way.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/str-two-way.h b/lib/str-two-way.h
+index fc2db03..b414771 100644
+--- a/lib/str-two-way.h
++++ b/lib/str-two-way.h
+@@ -231,7 +231,7 @@ critical_factorization (const unsigned char *needle, size_t needle_len,
+    most 2 * HAYSTACK_LEN - NEEDLE_LEN comparisons occur in searching.
+    If AVAILABLE modifies HAYSTACK_LEN (as in strstr), then at most 3 *
+    HAYSTACK_LEN - NEEDLE_LEN comparisons occur in searching.  */
+-static RETURN_TYPE
++static RETURN_TYPE _GL_ATTRIBUTE_PURE
+ two_way_short_needle (const unsigned char *haystack, size_t haystack_len,
+                       const unsigned char *needle, size_t needle_len)
+ {
+@@ -325,7 +325,7 @@ two_way_short_needle (const unsigned char *haystack, size_t haystack_len,
+    If AVAILABLE modifies HAYSTACK_LEN (as in strstr), then at most 3 *
+    HAYSTACK_LEN - NEEDLE_LEN comparisons occur in searching, and
+    sublinear performance is not possible.  */
+-static RETURN_TYPE
++static RETURN_TYPE _GL_ATTRIBUTE_PURE
+ two_way_long_needle (const unsigned char *haystack, size_t haystack_len,
+                      const unsigned char *needle, size_t needle_len)
+ {
