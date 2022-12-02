@@ -12,7 +12,7 @@ SECTION = "console/tools"
 LICENSE = "Intel | BSD-3-Clause | GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://source/compiler/aslcompile.c;beginline=7;endline=150;md5=41a76b4b1f816240f090cf010fefebf0"
 
-COMPATIBLE_HOST = "(i.86|x86_64|arm|aarch64).*-linux"
+COMPATIBLE_HOST = "(i.86|x86_64|arm|aarch64|loongarch64|loongarch32).*-linux"
 
 DEPENDS = "m4-native flex-native bison-native"
 

@@ -90,6 +90,10 @@ def go_map_arch(a, d):
         return 'ppc64'
     elif a == 'riscv64':
         return 'riscv64'
+    elif a == 'loongarch64':
+        return 'loong64'
+    elif a == 'loongarch32':
+        return 'loong32'
     else:
         raise bb.parse.SkipRecipe("Unsupported CPU architecture: %s" % a)
 

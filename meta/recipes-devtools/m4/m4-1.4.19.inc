@@ -13,6 +13,7 @@ SRC_URI = "${GNU_MIRROR}/m4/m4-${PV}.tar.gz \
            "
 SRC_URI:append:class-target = " file://run-ptest \
                                 file://serial-tests-config.patch \
+                                file://stack-direction-add-loongarch.patch \
                               "
 
 SRC_URI[md5sum] = "f4a2b0284d80353b995f8ef2385ed73c"
