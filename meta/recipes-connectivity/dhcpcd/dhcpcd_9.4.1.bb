@@ -42,8 +42,7 @@ EXTRA_OECONF = "--enable-ipv4 \
                 --dbdir=${DBDIR} \
                 --sbindir=${base_sbindir} \
                 --runstatedir=/run \
-                --enable-privsep \
-                --privsepuser=dhcpcd \
+                --disable-privsep \
                 --with-hooks \
                 --with-eghooks \
                "

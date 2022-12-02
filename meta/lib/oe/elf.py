@@ -28,6 +28,8 @@ def machine_dict(d):
                         "powerpc":    (20,     0,    0,          False,         32),
                         "riscv32":    (243,    0,    0,          True,          32),
                         "riscv64":    (243,    0,    0,          True,          64),
+                        "loongarch32":   (258, 0,    0,          True,          32),
+                        "loongarch64":   (258, 0,    0,          True,          64),
                       },
             "linux" : { 
                         "aarch64" :   (183,    0,    0,          True,          64),
@@ -57,6 +59,8 @@ def machine_dict(d):
                         "nios2":      (113,    0,    0,          True,          32),
                         "riscv32":    (243,    0,    0,          True,          32),
                         "riscv64":    (243,    0,    0,          True,          64),
+                        "loongarch32":   (258, 0,    0,          True,          32),
+                        "loongarch64":   (258, 0,    0,          True,          64),
                         "s390":       (22,     0,    0,          False,         32),
                         "sh4":        (42,     0,    0,          True,          32),
                         "sparc":      ( 2,     0,    0,          False,         32),
@@ -114,6 +118,8 @@ def machine_dict(d):
             "linux-gnu" :       {
                         "powerpc":    (20,     0,    0,          False,         32),
                         "sh4":        (42,     0,    0,          True,          32),
+                        "loongarch32":   (258, 0,    0,          True,          32),
+                        "loongarch64":   (258, 0,    0,          True,          64),
                       },
             "linux-gnu_ilp32" :     {
                         "aarch64" :   (183,    0,    0,          True,          32),

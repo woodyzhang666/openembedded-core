@@ -12,6 +12,7 @@ LOCALE_UTF8_IS_DEFAULT:class-nativesdk = "0"
 
 # seccomp is not yet ported to rv32
 DISTRO_FEATURES_DEFAULT:remove:riscv32 = "seccomp"
+DISTRO_FEATURES_DEFAULT:remove:loongarch64 = "seccomp"
 
 # seccomp is not yet ported to ARC
 DISTRO_FEATURES_DEFAULT:remove:arc = "seccomp"

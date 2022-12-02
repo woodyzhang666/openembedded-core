@@ -1,0 +1,23 @@
+From e5498b1a1f786ccfd32a02ac41580237fe9b5103 Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodyzhang666@gmail.com>
+Date: Mon, 5 Dec 2022 10:33:23 +0800
+Subject: [PATCH] stack grows down on loongarch
+
+Upstream-Status: Backport [b50c6442e43d79471a31a2a202d3e50c0557446f]
+Signed-off-by: Woody Zhang <woodyzhang666@gmail.com>
+---
+ m4/stack-direction.m4 | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/m4/stack-direction.m4 b/m4/stack-direction.m4
+index 9328725..cea29ae 100644
+--- a/m4/stack-direction.m4
++++ b/m4/stack-direction.m4
+@@ -32,6 +32,7 @@ AC_DEFUN([SV_STACK_DIRECTION],
+       i?86 | x86_64 | \
+       i860 | \
+       ia64 | \
++	  loongarch* | \
+       m32r | \
+       m68* | \
+       m88k | \

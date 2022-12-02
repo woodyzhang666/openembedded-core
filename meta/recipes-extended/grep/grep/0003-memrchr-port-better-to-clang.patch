@@ -1,0 +1,27 @@
+From 3df1aa7b1b6291d289be951ef57340be2a0d6a1d Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodyzhang666@gmail.com>
+Date: Mon, 5 Dec 2022 10:48:18 +0800
+Subject: [PATCH] memrchr: port better to clang
+
+* lib/memrchr.c (__memrchr): Cast to void * instead of to
+longword *, to pacify clang -Wcast-align (Bug#33544).
+
+Upstream-Status: Backport [626586a9734301165058ef70005b692d0f749df1]
+Signed-off-by: Woody Zhang <woodyzhang666@gmail.com>
+---
+ lib/memchr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/memchr.c b/lib/memchr.c
+index 56fd59d..55d586b 100644
+--- a/lib/memchr.c
++++ b/lib/memchr.c
+@@ -81,7 +81,7 @@ __memchr (void const *s, int c_in, size_t n)
+     if (*char_ptr == c)
+       return (void *) char_ptr;
+ 
+-  longword_ptr = (const longword *) char_ptr;
++  longword_ptr = (const void *) char_ptr;
+ 
+   /* All these elucidatory comments refer to 4-byte longwords,
+      but the theory applies equally well to any size longwords.  */
