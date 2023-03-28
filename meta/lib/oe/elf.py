@@ -114,6 +114,7 @@ def machine_dict(d):
                         "powerpc":    (20,     0,    0,          False,         32),
                       },
             "linux-gnu" :       {
+                        "loongarch64":(258,    0,    0,          True,          64),
                         "powerpc":    (20,     0,    0,          False,         32),
                         "sh4":        (42,     0,    0,          True,          32),
                       },
