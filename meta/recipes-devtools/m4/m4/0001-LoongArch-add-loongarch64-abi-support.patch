@@ -1,0 +1,46 @@
+From 464cbd19a454da3515112f707a1a8203a5b9e625 Mon Sep 17 00:00:00 2001
+From: Woody Zhang <woodylab@foxmail.com>
+Date: Mon, 1 May 2023 16:45:42 +0800
+Subject: [PATCH] LoongArch: add loongarch64 abi support
+
+Upstream-Status: Pending
+Signed-off-by: Woody Zhang <woodylab@foxmail.com>
+---
+ m4/host-cpu-c-abi.m4 | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/m4/host-cpu-c-abi.m4 b/m4/host-cpu-c-abi.m4
+index 64e28b1..382949d 100644
+--- a/m4/host-cpu-c-abi.m4
++++ b/m4/host-cpu-c-abi.m4
+@@ -237,6 +237,10 @@ changequote([,])dnl
+          gl_cv_host_cpu_c_abi=powerpc
+          ;;
+ 
++       loongarch64 )
++         gl_cv_host_cpu_c_abi=loongarch64
++         ;;
++
+        riscv32 | riscv64 )
+          # There are 2 architectures (with variants): rv32* and rv64*.
+          AC_COMPILE_IFELSE(
+@@ -468,7 +472,7 @@ AC_DEFUN([gl_HOST_CPU_C_ABI_32BIT],
+        case "$gl_cv_host_cpu_c_abi" in
+          i386 | x86_64-x32 | arm | armhf | arm64-ilp32 | hppa | ia64-ilp32 | mips | mipsn32 | powerpc | riscv*-ilp32* | s390 | sparc)
+            gl_cv_host_cpu_c_abi_32bit=yes ;;
+-         x86_64 | alpha | arm64 | hppa64 | ia64 | mips64 | powerpc64 | powerpc64-elfv2 | riscv*-lp64* | s390x | sparc64 )
++         x86_64 | alpha | arm64 | hppa64 | ia64 | mips64 | powerpc64 | powerpc64-elfv2 | riscv*-lp64* | s390x | sparc64 | loongarch64)
+            gl_cv_host_cpu_c_abi_32bit=no ;;
+          *)
+            gl_cv_host_cpu_c_abi_32bit=unknown ;;
+@@ -619,6 +623,10 @@ changequote([,])dnl
+            gl_cv_host_cpu_c_abi_32bit=yes
+            ;;
+ 
++         loongarch64 )
++           gl_cv_host_cpu_c_abi_32bit=no
++           ;;
++
+          riscv32 | riscv64 )
+            # There are 6 ABIs: ilp32, ilp32f, ilp32d, lp64, lp64f, lp64d.
+            # Size of 'long' and 'void *':

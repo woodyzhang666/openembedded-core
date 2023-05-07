@@ -41,7 +41,6 @@ SANITIZERS:nios2 = ""
 SANITIZERS:riscv64 = ""
 SANITIZERS:riscv32 = ""
 SANITIZERS:loongarch64 = ""
-SANITIZERS:loongarch32 = ""
 SANITIZERS:libc-musl = ""
 
 RRECOMMENDS:packagegroup-core-sdk = "\
